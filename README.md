@@ -16,13 +16,17 @@ Since Markdown easily formats to HTML, I'm using InDesign's ability to import XM
 
 I have CS4. If this works with any other version, let me know.
 
+## Unit types error
+
+If you are running Snow Leopard, you may see an error about the Adobe Unit Types scripting addition file:
+
+    Error loading /Library/ScriptingAdditions/Adobe Unit Types.osax
+
+Apparently, the addition file installed with CS4 is 32-bit, while AppleScript expects 64-bit. There is an Adobe Knowledge Base [article](http://kb2.adobe.com/cps/516/cpsid_51615.html) on the topic witch lists a number of suggestions to work around the issue, including a 64-bit scripting addition file.
+
 # Resources
 
-You may be interested in these bits of Adobe documentation:
-
-* [Adobe InDesign CS4 Scripting Guide: AppleScript](https://www.adobe.com/products/indesign/scripting/pdfs/InDesignCS4_ScriptingGuide_AS.pdf)
-* [Adobe InDesign CS4 Scripting Tutorial](http://www.adobe.com/products/indesign/scripting/pdfs/InDesignCS4_ScriptingTutorial.pdf)
-* [Adobe InDesign CS4 Help Documentation, XML](http://help.adobe.com/en_US/InDesign/6.0/WSa285fff53dea4f8617383751001ea8cb3f-6d10a.html)
+You may be interested in reading up on Adobe's documentation on the topic. [This page](http://www.adobe.com/products/indesign/scripting/index.html) has a great variety of resources, including user guides and links to the [InDesign Scripting User Forum](http://forums.adobe.com/community/indesign/indesign_scripting). Who knew.
 
 # About
 
