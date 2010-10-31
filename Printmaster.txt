@@ -1,5 +1,5 @@
 tell application "Adobe InDesign CS4"
-  set myDocument to open "Macintosh HD:Users:jpfinley:code:printmaster:test_template.indt"
+  set myDocument to open "Macintosh HD:Users:jpfinley:code:printmaster:test_template.indd"
   tell myDocument
     tell XML view preferences
       set show attributes to true
@@ -8,11 +8,13 @@ tell application "Adobe InDesign CS4"
       set show tag markers to true
       set show text snippets to true
     end tell
+
     import XML from "Macintosh HD:Users:jpfinley:code:printmaster:source:source.xml"
     set myPage to page 1 of myDocument
     set myTextFrame to make text frame
     set geometric bounds of myTextFrame to {72, 72, 288, 288}
     tell myTextFrame to place XML using XML element 1 of myDocument
-  end tell
-  say "some stuff"
-end tell
+
+  end tell -- myDocument
+  --say "some stuff"
+end tell -- applicaiton
