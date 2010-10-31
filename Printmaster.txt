@@ -9,6 +9,17 @@ tell application "Adobe InDesign CS4"
       set show text snippets to true
     end tell
 
+    -- Map the paragraph styles to the XML document. This must be done before the XML is imported. Big thanks to Phillip @ http://macscripter.net/viewtopic.php?id=18112
+    set PStyleCount to (get count of paragraph styles)
+    repeat with p from 1 to PStyleCount
+      set thisPStyle to paragraph style p
+      set thisPStyleObject to object reference of thisPStyle
+      set thisPStyleName to name of thisPStyleObject as string
+      if thisPStyleName is not "[Basic Paragraph]" and thisPStyleName is not "[No Paragraph Style]" then --Avoids this error: The tag you are trying to create has an invalid name.
+        set XMLImportMap to make XML import map with properties {mapped style:thisPStyle, markup tag:thisPStyleName}
+      end if
+    end repeat
+
     import XML from "Macintosh HD:Users:jpfinley:code:printmaster:source:source.xml"
     set myPage to page 1 of myDocument
     set myTextFrame to make text frame
@@ -17,4 +28,4 @@ tell application "Adobe InDesign CS4"
 
   end tell -- myDocument
   --say "some stuff"
-end tell -- applicaiton
+end tell -- application
