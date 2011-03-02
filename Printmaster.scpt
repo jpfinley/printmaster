@@ -1,8 +1,12 @@
 tell application "Adobe InDesign CS4"
 
-  -- TODO: Ask for template document interactively
-  set myDocument to open "Macintosh HD:Users:jpfinley:code:printmaster:test_template.indt"
+  -- TODO: Ask for template document interactively. Something like:
+  -- set myDocument to choose file with prompt "Please select the InDesign Template file"
 
+  -- Open the InDesign Template file (.indt)
+  set myDocument to open "Macintosh HD:Users:some:path:to:test_template.indt"
+
+  -- Set up the InDesign view to show the XML sidebar and all of the good stuff.
   tell myDocument
     tell XML view preferences
       set show attributes to true
@@ -12,7 +16,8 @@ tell application "Adobe InDesign CS4"
       set show text snippets to true
     end tell
 
-    -- Map the paragraph styles to the XML document. This must be done before the XML is imported. Big thanks to Phillip @ http://macscripter.net/viewtopic.php?id=18112
+    -- Map the paragraph styles to the XML document. This must be done before the XML is imported.
+    -- Big thanks to Phillip @ http://macscripter.net/viewtopic.php?id=18112
     set PStyleCount to (get count of paragraph styles)
     repeat with p from 1 to PStyleCount
       set thisPStyle to paragraph style p
@@ -27,15 +32,15 @@ tell application "Adobe InDesign CS4"
     -- TODO: Get markdown document interactively
     -- TODO: Convert markdown to XML
 
-    import XML from "Macintosh HD:Users:jpfinley:code:printmaster:source:source.xml"
+    -- Takes the XML source file and loads it into our blank test_template.indt
+    import XML from "Macintosh HD:Users:some:path:to:source.xml"
 
     -- TODO: Place the XML into the document automatically
-    -- set myPage to page 1 of myDocument
-    -- set myTextFrame to text frame 1 of page 1 of myDocument
-    -- set geometric bounds of myTextFrame to {72, 72, 288, 288}
-    -- tell myTextFrame to place XML using XML element 1 of myDocument
+    -- Currently one must drag the `XML` node from the sidebar onto the text
+    -- frame from within InDesign to populate the page with the document's content.
+    -- Ideally, this would be done in AppleScript, but I haven't been able to figure this out.
 
-    -- TODO: say "Your doument has finished compiling and is now ready... Congratulations."
+    -- TODO: Execute this whole thing with a command from within Textmate
 
   end tell -- myDocument
 end tell -- application
