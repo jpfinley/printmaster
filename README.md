@@ -9,7 +9,9 @@ Since Markdown easily formats to HTML, I'm using InDesign's ability to import XM
 1. Given a Markdown document,
 1. Convert it into XML
 1. Pass that to an AppleScript file.
+
   The AppleScript copies a previously designed and formatted InDesign template, imports the XML into the template, and maps the template's styles to the tags.
+
 1. The AppleScript exports this all as an InDesign document.
 
 # Requirements and Use
